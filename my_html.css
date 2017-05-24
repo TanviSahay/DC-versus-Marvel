@@ -1,0 +1,59 @@
+@font-face{font-family:'Arvo';src:url('fonts/Arvo-Regular.ttf')}
+
+#background{
+width: 1200px;
+height: 450px;
+margin: 30px auto;
+background-image: 
+linear-gradient(
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)
+    ),url(pic4.jpg);
+display:flex;
+align-items: center;
+justify-content: center;
+position:static;
+
+}
+
+#chart1{
+width: 1200px;
+margin: 30px 20px;
+background-color: #ffffff;
+opacity: 0.75;
+display:flex;
+align-items :center;
+justify-content: center;
+text-align: center;
+font-family: sans-serif; 
+}
+
+.para{
+margin:auto;
+width: 800px;
+font-size: 14px;
+text-align: justify;
+}
+
+div.tooltip{
+  position: absolute;
+  text-align: center;
+  width: 350px;
+  height: 100px;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.9);
+  color: #fff;
+  font: 12px sans-serif;
+  pointer-events: none;
+}
+
+div.tooltip2{
+  position: absolute;
+  text-align: center;
+  width: 300px;
+  height: 10px;
+  color: #fff;
+  padding: 12px;
+  font: 15px sans-serif;
+  pointer-events: none;
+}

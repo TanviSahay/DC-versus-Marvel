@@ -1,0 +1,165 @@
+<html>
+<head>
+    <title> My Final Project </title>
+    <meta charset="utf-8"/>
+    <link type="text/css" rel="stylesheet" href="./my_html.css?version=1"></link>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dc/2.1.3/dc.css"/>
+<style>    
+h4 span {
+      font-size:14px;
+      font-weight:normal;
+      }
+    h2 {
+      float: right;
+    }
+    h2 span {
+      font-size:14px;
+      font-weight:normal;
+      }
+</style>
+</head>
+<body onLoad="document.getElementById('filter').options[2].selected = 'selected';document.getElementById('select-operation').selected='selected';">
+
+<div id="container">
+
+<script type="text/javascript" src="http://d3js.org/queue.v1.min.js"></script>
+<script type="text/javascript" src="http://d3js.org/d3.v3.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.12/crossfilter.js"></script>
+<script type="text/javascript" src="./dc.js"></script>
+<div id="background">
+ <div id="chart1"> 
+    <h1 style="font-family:Georgia">DC VERSUS MARVEL <br />
+    A Data Visualization and Machine Learning Approach</h1>
+ </div>
+</div>
+
+<p class="para" style="margin-top:80px;">The long standing contention between two of the world's most popular comic book and movie franchisees: DC and Marvel has been a topic of debate for several decades and will perhaps continue to remain so long after the two have faded into history. In this blog, I explore and provide several statistics which reflect upon how these two comic book juggernauts have changed through the ages as compared with each other as well as in association with changes in the society. Let us begin!</p>
+
+<p class="para" style="margin-top:80px;"> About the data: The data used for this project has been taken from the open source comic dataset made available by FiveThirtyEight.com and can be found on their GitHub page - <a href="https://github.com/fivethirtyeight/data/tree/master/comic-characters"> Comic-Characters </a>. The table below shows a subset of the data for top 8 most frequently appearing characters for both DC and Marvel.</p>
+
+<div class='container' style="font size=8px;margin-left:85px; margin-top:80px">
+  <div class='row'>
+    <div class='span12'>
+      <table class='table table-hover' id='table1'>
+        <thead>
+          <tr class='header'>
+            <th>Comic</th>
+            <th>Character</th>
+            <th>Appearances</th>
+            <th>First Appearance</th>
+            <th>Identity</th>
+            <th>Alignment</th>
+            <th>Sex</th>
+            <th>Hair Color</th>
+            <th>Eye Color</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+</div>
+
+<p class="para" style="margin-top:80px;"> <strong>The first difference between DC and Marvel are their year of introduction.</strong> The timeline below shows some of the most famous characters in order of appearance, colored according to their comic book affiliation. As you see, DC introduced it's first famous character, Batman, in 1939 while Marvel's Captain America was introduced in 1941. Though the very first characters were introduced in 1935 and 1939 respectively, the ones that really put these comic giants out on the map were not introduced atleast 2 years after their initiation. You can probe the points below to see the actual characters.</p>
+
+<div id="timeline" style="margin-left:240px;margin-top:40px;"><h5>Timeline</h5></div>
+<div id="tooltip"></div>
+<div id="legend_timeline" style="margin-left:400px;"></div>
+
+<p class="para" style="margin-top:80px;">Next, we look at the <strong>total number of characters</strong> each comic giant has and what the <strong> per year addition of new characters </strong>has been like. We also look at the <strong>character distribution based on their alignment</strong>. </p>
+
+<div>
+<div id="pie1" style="margin-left:50px;margin-bottom:60px;margin-top:60px;"><h5>Total Characters</h5></div>
+<div id="bar1" style="margin-top:60px;margin-bottom:60px;" ><h4>Marvel</h4>
+    <div class="reset" style="visibility: hidden;">
+      <a href="javascript:chart1.filterAll();dc.redrawAll();">reset</a>
+    </div>
+</div>
+<div id="bar2" style="margin-top:60px;margin-bottom:60px;"><h4>DC</h4>
+    <div class="reset" style="visibility: hidden;">
+      <a href="javascript:chart2.filterAll();dc.redrawAll();">reset</a>
+    </div>
+</div>
+<div id="row" style=margin-bottom:60px;margin-top:40px;margin-left:40px;"><h5>Characters by their alignment</h5></div>
+<div id="group1" style=margin-bottom:60px;margin-left:10px;"><h5>Characters in each page range</h5></div>
+</div>
+
+<p class="para" style="margin-top:140px;">As we can see,<strong> Marvel has significantly more characters that DC</strong>, with the per year statistics cementing that observation. Despite the fact that Marvel was introduced 4 years after the first DC comic, introducing Doctor Richard Occult, was published, the number of characters that Marvel has added each year are much greater than those added by DC. However, the most frequently occurring Marvel character, Spiderman or Peter Parker was not introduced until as late as August 1962 while the DC character with maximum appearances, Batman or Bruce Wayne, had already started his night crusades as early as May 1939.</p>
+
+
+<p class="para" style="margin-top:50px;"> Breaking down the comic characters based on their alignment, we see some interesting trends. The row chart shows total number of bad, good and neutral characters in the entire Comic universe, both DC and Marvel combined. As expected, there are more good characters than bad and neutral characters are even lower in number. However, while <strong>marvel only has 42 good characters more than bad characters, DC has a difference of more than 300 between its count of good and bad characters</strong>. Number of neutral characters also differ between the two franchisees. Where DC has almost 5 times as many good characters as neutral ones, Marvel only has this statistic at 2 times i.e.<strong> the ratio of good to neutral is much higher in DC than in Marvel</strong>.</p>
+
+<p class="para" style="margin-top:20px;"> This is in line with what fans of the two comics already know to be true. DC only has a handful of neutral characters, since each DC characters has multiple levels of depth in them. Think about it. Would you consider The Bat good, bad, partially good, partially bad or extremely complicated!? As opposed to that Marvel maintains the strategy of more straight forward characters. We can all agree that Captain America is good and Red Skull is bad. Relatively speaking. 
+
+<p class="para" style="margin-top:50px;">From the group chart dividing character introduction according to page ranges, we can also see that by default, all characters are introduced in the first 50,000 pages. However, these statistics are skewed in favor of marvel due to its sheer amount of characters. Let's filter those by Comic Type. <strong>While Marvel still shows the same trend of introducing both good and bad characters in the beginning of their comics, DC tends to hold out its introduction of the villains until a little later</strong>. Almost always, the heroes are introduced in the beginning of the comics while the bad guys have a slow and steady entry spread through out the first 200,000 pages.</p> 
+
+<p class="para" style="margin-top:20px;"> In general, <strong>DC comics are smaller in page length</strong>, with maximum going up to 450,000. As opposed to that, <strong>Marvel comics can be as long as a staggering 800,000 pages</strong>.
+
+<p class="para" style="margin-top:100px;">Next, let's take a look at how the two comic franchisees differ in terms of the<strong> gender distribution of their characters</strong>.</p>
+
+<div id="series1" style="margin-left:240px;margin-top:80px;"><h3>Gender Based Distribution</h3></div>
+<select id='filter' style="margin-top:120px;">
+   <option value="DC" >Only DC</option>
+   <option value="MARVEL">Only Marvel</option>
+   <option value="BOTH" selected="selected">Both Marvel and DC</option>
+</select>
+
+
+<p class="para" style="margin-top:420px;"> The overall trend of addition of new characters divided by their gender has a lot of insight to present in terms of the growth of the comic industry itself. The 50s saw a sudden drop in the number of new characters being added while the 80s saw an escalation, with the industry reaching its peak in 1990s. DC saw a steady character trend till 1980s and then a steep incline in the number of characters being added, both manle and female. Marvel however has been steadily adding both male and female characters to their bank since their first introduction.
+
+<p class="para" style="margin-top:20px;"><strong> While the number of female characters currently in the comic universe is certainly greater than when they started off,not many new characters have been added over the years</strong>. Trends in addition of male characters have been much more stark than female characters for both DC and Marvel. Other than male and female characters, comic books have also seen a few transgender, agender, genderless and genderfluid characters in the past few decades. However, not many of those have been added over the years. <strong>DC only has genderless characters while Genderfluid and agender characters are present only in Marvel. Of all these 3 categories, only agender characters have seen a slight increase in numbers in the last decade.</strong>
+
+<p class="para" style="margin-top:100px;"> Talking of character trends, DC and Marvel also differ in the <strong>features of their characters</strong>, with Marvel exploring a wider range of eye and hair colors than DC. The set of heatmaps shown below portrays exactly that.
+
+  <div id="select-operation" style="margin-left:380px;margin-top:40px;"> <br>Select values to be displayed:
+    <label><input type=radio name="operation" value="APPEARANCES" checked="true">&nbsp;Absolute Appearances</label>
+    <label><input type=radio name="operation" value="APPEARANCES_R">&nbsp;Relative Apperances</label>
+  </div>
+
+<div id="heat1" style="margin-top:10px;margin-left:200px;"><h3>Eye Color</h3></div>
+<div id="heat2" style="margin-left:200px;margin-top:-20px;"><h3>Hair Color</h3></div>
+<div id="heat3" style="margin-left:200px;margin-top:-20px;"><h3>Sexual Orientation</h3></div>
+<div id="heat4" style="margin-left:200px;margin-top:-20px;"><h3>Identity</h3></div>
+<div id="legend" style="margin-left:520px;margin-bottom:40px;"></div>
+
+<p class="para"> As you can see from the above set of heatmaps, <strong>Marvel's characters are much more varied than DC</strong>. However, both have majority appearances of characters with eye color as blue, brown or green and hair color as black or brown, with a small proportion having blond or red hair. However, these statistics are again skewed towards Marvel due to their high number of characters. This is why I have provided the option to see relative number of characters with a particular hair/eye color or sexual orientation. Let's switch it on and see what trends occur.</p>
+
+<p class="para" style="margin-top:20px;"> For characteristics relative to the separate DC and Marvel population, <strong>DC has the highest number of appearances of characters having blue eyes as opposed to any other color</strong>. Marvel on the other hand has blue eyed characters appearing in majority by a relatively smaller percentage. A similar trend is seen in case of hair color, <strong>with Marvel exploring more varieties and thus not giving majority to any one hair color, while DC has a clear majority for more traditional characteristics like black or brown hair</strong>. Both the comics however, have a clear majority of straight characters, with <strog>Marvel still having characters with varied sexual orientations</strong>, like homosexual, pansexual and transvestites. However, they still have very few apperances. <strong>DC on the other hand has not experimented much with it's characters' sexual orientations</strong>, with the only digression from straight being homosexuality and bisexuality.</p>
+
+<p class="para" style="margin-top:20px;"> We also see that <strong>majority appearances of characters in DC are those with a secret identity, followed closely by public identity</strong>. Only a fraction of the characters have an unknown identity. On the other hand,<strong> Marvel has almost exactly equal number of apperances of both public and secret identity characters</strong>. Another interesting thing here is that <strong>marvel has no characters with an unknown identity</strong>. This is another fact which is quite well known to the fandom, as substatiated through the above visualizations. After all, who can forget Tony Stark's "I am Iron Man"! </p>
+
+
+<p class="para" style="margin-top:80px;"> From all of the comparisons that we saw above, let's summarize the differences between DC and Marvel. First, Marvel, despite having been introduced later, has had a much greater per year addition of characters than DC. However, the most famous DC and marvel characters have had a gap of almost 2 decades between them. Next, DC has much more good characters than bad and only a handful neutral characters, which is a contrast to Marvel's abundance of good, bad and neutral characters. However, DC introduces its good characters in the beginning of the comics and slowly unravels the villians, while Marvel pops them all out in the first 50,000 pages. Finally, character trends have been similar in number of male/female characters added per year. However, while DC tends to prefer more traditional attributes for their characters, Marvel has experimented quite a lot with their characters. DC also like to keep its characters' real identity under wraps, which is something Marvel does not believe in much. This does not always fare well for the characters though, as Tony Stark will assuredly concur with!</p>
+
+
+<div style="margin-left:245px;margin-top:100px;"><h4>Clustering based on similarity between DC and Marvel Characters</h4></div>
+<p class="para" style="margin-top:30px;"> After all of this comparing the differences between the two, let's do something fun! Let's try to cluster marvel and dc characters and see which ones lie closest to each other i.e. let's see which characters are the most similar to each other. For this, the characteristics I have take into account are: "Page_Id", "Gender", "Alignment", "Eye Color", "Hair Color", "Sexual Orientation", "Alive/Deceased", "Appearances" and "Year of first appearance". The interactive element below allows you to choose how many characters you wish to cluster and into how many clusters you want them divided. </p>
+
+<div id="kmeans" style="margin-left:260px;margin-top:80px;">
+<div><svg></svg></div>
+<div>
+<div><button id="step">Step</button> <button id="restart" disabled>Restart</button></div>
+</div>
+<fieldset style="display: inline; margin: .8em 0 1em 0; border: 1px solid #999; padding: .5em">
+<div><label for="N">N (the number of node):</label><input type="number" id="N" min="2" max="5000" value="100"></div>
+<div><label for="K">K (the number of cluster):</label><input type="number" id="K" min="2" max="50" value="5"></div>
+<div><button id="reset">New</button></div>
+</fieldset>
+</div>
+<div id="tooltip2"></div>
+
+<p class="para" style="margin-top:40px;"> Depending on the cluster center initialization and number of characters and clusters chosen, analysis and observations may differ. However, we see that based on the features selected, one character, Jean Grey, lies in a cluster separate from all others. Not suprising, considering her iconic red hair and green eyes and the fact that she was one of the most powerful characters to have died so early. Other than that, we see one primary cluser for the male characters and one for the female characters. This shows that gender is one of the prime attribute separating the characters from each other, not other attributes such as number of appearances of physical traits.This suggest that mostly all female/male characters have similar attributes, regardless of their comic affilication. Other than these trivial observations, more can be made by changing number of cluster and number of characters. Interestingly, Loki comes closer to the female cluster than the male one. Make one wonder... 
+
+<p class="para" style="margin-top:100px;margin-bottom:100px;"> This brings us to the end of this journey. We saw several differences between the two comic book giants and tried to cluster them together based on their similarities. Keep in mind that all of this information was based on the comic books and not the movies. Inspiration for this analysis was taken from FiveThirtyEight's own blog: <a href=https://fivethirtyeight.com/features/women-in-comic-books/> Comic Books Are Still Made By Men, For Men And About Men</a>. For more information about the clustering method used(K-Means Clustering), checkout its wikipedia page - <a href="https://en.wikipedia.org/wiki/K-means_clustering">K-Means Wiki</a>. The clustering visualization was adapted from this blog - <a href="http://tech.nitoyon.com/en/blog/2013/11/07/k-means/">Visualizing K-Means algorithm with D3.js</a>. I hope you all enjoyed! Until next time!
+
+
+
+<script src="./graphs.js",type="text/javascript"></script>
+<script src="./table.js",type="text/javascript"></script>
+<script type="text/javascript" src="./my_timeline.js"></script>
+<script type="text/javascript" src="./k-means.js"></script>
+
+</div>
+
+</body>
+</html>
